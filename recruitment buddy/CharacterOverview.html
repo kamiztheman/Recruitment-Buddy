@@ -3,7 +3,10 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="wowhelpercss.css" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="wowhelpercss.css" />
+<script>const whTooltips = {colorLinks: true, iconizeLinks: true, renameLinks: true};</script>
+<script src="https://wow.zamimg.com/widgets/power.js"></script>
     <title>World of Warcraft Recruitment Buddy</title>
 </head>
 <body>
@@ -18,6 +21,8 @@
             </div>
         </ul>
     </div>
+
+    <!-- header containing character details (name, race, server, ect -->
     <div class="characterinfocontainer">
             <img src="" alt="Character Portrait" style="width:150px;height:150px;border:5px outset gray;float: left;margin-right:20px;" />
         <p id="charname">Character Name</p>
@@ -25,20 +30,22 @@
         <p id="race">race / class </p>
         <p id="server">server</p>
     </div>
-        <div class="tab">
-            <button class="tabchoice" onclick="openTab(event, 'Character'">Character</button>
-            <button class="tabchoice" onclick="openTab(event, 'Logs'">Logs</button>
-            <button class="tabchoice" onclick="openTab(event, 'Raider IO'">Raider IO</button>
-            <button class="tabchoice" onclick="openTab(event, 'PVP Rating'">PVP Rating</button>
-            <button class="tabchoice" onclick="openTab(event, 'Report Card'">Report Card</button>
-        </div>
-        <div id="Character" class="tabcontent">
+    <div class="tabbuttoncontainer">
+        <button id="defaultOpen" class="tabchoice" onclick="openTab(event, 'Character')">Character</button>
+        <button class="tabchoice" onclick="openTab(event, 'Logs')">Logs</button>
+        <button class="tabchoice" onclick="openTab(event, 'Raider-IO')">Raider IO</button>
+        <button class="tabchoice" onclick="openTab(event, 'PVP Rating')">PVP Rating</button>
+        <button class="tabchoice" onclick="openTab(event, 'Report Card')">Report Card</button>
+    </div>
+
+        <!-- contains all info about character gear, talents, conduits, ect -->
+    <div id="Character" class="tabcontent">
             <div class="geartablecontainer">
                 <table>
                     <caption>Total Ilvl: 500.00</caption>
                     <tr>
                         <th>Helm</th>
-                        <td>item link</td>
+                        <td><a href="https://www.wowhead.com/item=186287/hood-of-vengeful-possession?bonus=6805">Hood of Vengeful Possession</a></td>
                         <td>ilvl</td>
                     </tr>
                     <tr>
@@ -113,48 +120,255 @@
                     </tr>
                 </table>
             </div>
-            <div class="talenttablecontainer">
-                <table>
-                    <caption>Talents</caption>
-                    <tr>
-                        <th>15</th>
-                        <td>Talent Link</td>
-                    </tr>
-                    <tr>
-                        <th>25</th>
-                        <td>Talent Link</td>
-                    </tr>
-                    <tr>
-                        <th>30</th>
-                        <td>Talent Link</td>
-                    </tr>
-                    <tr>
-                        <th>35</th>
-                        <td>Talent Link</td>
-                    </tr>
-                    <tr>
-                        <th>40</th>
-                        <td>Talent Link</td>
-                    </tr>
-                    <tr>
-                        <th>45</th>
-                        <td>Talent Link</td>
-                    </tr>
-                    <tr>
-                        <th>45</th>
-                        <td>Talent Link</td>
-                    </tr>
-                </table>
-                <div class="conduitchoice">
-                    <p>Conduits</p>
-                    <img src="" alt="choice" style="width:25px;height:25px;border:5px outset gray;border-radius: 50%;" /><br />
-                    <img src="" alt="choice" style="width:25px;height:25px;border:5px outset gray;border-radius: 50%;" /><br />
-                    <img src="" alt="choice" style="width:25px;height:25px;border:5px outset gray;border-radius: 50%;" /><br />
+
+        <!--table with currently chosen talets of searched character-->
+                <div class="talenttablecontainer">
+                    <table>
+                        <caption>Talents</caption>
+                        <tr>
+                            <th>15</th>
+                            <td><a href="https://www.wowhead.com/spell=205024/lonely-winter">Lonely Winter</a></td>
+                        </tr>
+                        <tr>
+                            <th>25</th>
+                            <td>Talent Link</td>
+                        </tr>
+                        <tr>
+                            <th>30</th>
+                            <td>Talent Link</td>
+                        </tr>
+                        <tr>
+                            <th>35</th>
+                            <td>Talent Link</td>
+                        </tr>
+                        <tr>
+                            <th>40</th>
+                            <td>Talent Link</td>
+                        </tr>
+                        <tr>
+                            <th>45</th>
+                            <td>Talent Link</td>
+                        </tr>
+                        <tr>
+                            <th>45</th>
+                            <td>Talent Link</td>
+                        </tr>
+                    </table>
                 </div>
-            </div>
+
+        <!--table with currently equipped soulbind conduits-->
+                <div class="conduitchoicecontainer">
+                    <h3>Soulbind Conduits</h3>
+                    <img src="https://wow.zamimg.com/images/wow/icons/large/spell_frost_coldhearted.jpg" alt="conduiticon" />                    
+                    <img src="https://wow.zamimg.com/images/wow/icons/large/ability_warrior_renewedvigor.jpg" alt="conduiticon"/>
+                    <img src="https://wow.zamimg.com/images/wow/icons/large/ability_warrior_renewedvigor.jpg" alt="conduiticon"/>
+                </div>
+    </div>
+
+    <!-- contains references to warcraftlogs for any uploaded kill rankings -->
+    <div id="Logs" class="tabcontent">
+
+        <!-- table for boss logs-->
+        <div class="bossrankcontainer">
+            <table>
+                <caption>Boss Logs</caption>
+                <tr>
+                    <th>Boss</th>
+                    <th>Best %</th>
+                    <th>Rank</th>
+                    <th>Spec</th>
+                </tr>
+                <tr>
+                    <td>Boss 1</td>
+                    <td>100</td>
+                    <td>1</td>
+                    <td>icon</td>
+                </tr>
+		                <tr>
+                    <td>Boss 2</td>
+                    <td>87</td>
+                    <td>84</td>
+                    <td>icon</td>
+                </tr>
+                <tr>
+                    <td>Boss 3</td>
+                    <td>68</td>
+                    <td>66,245</td>
+                    <td>icon</td>
+                </tr>
+                <tr>
+                    <td>Boss 4</td>
+                    <td>81</td>
+                    <td>55</td>
+                    <td>icon</td>
+                </tr>
+                <tr>
+                    <td>Boss 5</td>
+                    <td>88</td>
+                    <td>243</td>
+                    <td>icon</td>
+                </tr>
+            </table>
         </div>
-        <div id="Logs" class="tabcontent"></div>
-        <div id="Raider IO" class="tabcontent"></div>
-        <div id="PVP Rating" class="tabcontent"></div>
+
+        <!--table for current bosses killed compared to total bosses in raid tier, including difficulty-->
+        <div class="currentprog">
+            <table>
+                <caption>Current Progression</caption>
+                <tr>
+                    <th>N</th>
+                    <th>H</th>
+                    <th>M</th>
+                </tr>
+                <tr>
+                    <td>10/10</td>
+                    <td>10/10</td>
+                    <td>3/10</td>
+                </tr>
+            </table>
+        </div>
+
+        <!--footer with hyperlink to source page's data-->
+        <div class="resourcefooter">
+            <footer id="warcraftlogsfooter">For more information, please visit this character's Warcraftlogs page</footer>
+        </div>
+    </div>
+
+    <!-- contains references to raider io score/in-game m+ score for mythic plus dungeons -->
+    <div id="Raider-IO" class="tabcontent">
+        <div class="dungeonlistcontainer">
+            <table>
+                <caption>Best M+ Scores</caption>
+                <tr>
+                    <th>Dungeon</th>
+                    <th>Highest Key Completed</th>
+                    <th>Best Time</th>
+                </tr>
+                <tr>
+                    <td><img src="https://wow.zamimg.com/images/wow/icons/large/achievement_dungeon_plaguefall.jpg" alt="dungeonicon"/><a href="https://www.wowhead.com/plaguefall">Plaguefall</a></td>
+                    <td>(roleicon) +15 Fortified<br>(roleicon) +15 Tyrannical</td>
+                    <td>00:32:51</td>
+                </tr>
+                <tr>
+                    <td><img src="https://wow.zamimg.com/images/wow/icons/medium/achievement_dungeon_theotherside.jpg" alt="dungeonicon"/><a href="https://www.wowhead.com/de-other-side">De Other Side</a></td>
+                    <td>(roleicon) +0 Fortified<br>(roleicon) +0 Tyrannical</td>
+                    <td>00:12:34</td>
+                </tr>
+                <tr>
+                    <td><img src="https://wow.zamimg.com/images/wow/icons/medium/achievement_dungeon_mistsoftirnascithe.jpg" alt="dungeonicon"/><a href="https://www.wowhead.com/mists-of-tirna-scithe">Mists of Tirna Scithe</a></td>
+                    <td>(roleicon) +0 Fortified<br>(roleicon) +0 Tyrannical</td>
+                    <td>00:12:34</td>
+                </tr>
+                <tr>
+                    <td><img src="https://wow.zamimg.com/images/wow/icons/medium/achievement_dungeon_hallsofattonement.jpg" alt="dungeonicon" /><a href="https://www.wowhead.com/halls-of-attonement">Halls of Attonement</a></td>
+                    <td>(roleicon) +0 Fortified<br>(roleicon) +0 Tyrannical</td>
+                    <td>00:12:34</td>
+                </tr>
+                <tr>
+                    <td><img src="https://wow.zamimg.com/images/wow/icons/medium/achievement_dungeon_theatreofpain.jpg" alt="dungeonicon" /><a href="https://www.wowhead.com/theater-of-pain">Theater of Pain</a></td>
+                    <td>(roleicon) +0 Fortified<br>(roleicon) +0 Tyrannical</td>
+                    <td>00:12:34</td>
+                </tr>
+                <tr>
+                    <td><img src="https://wow.zamimg.com/images/wow/icons/medium/achievement_dungeon_spireofascension.jpg" alt="dungeonicon" /><a href="https://www.wowhead.com/spires-of-ascension">Spires of Ascension</a></td>
+                    <td>(roleicon) +0 Fortified<br>(roleicon) +0 Tyrannical</td>
+                    <td>00:12:34</td>
+                </tr>
+                <tr>
+                    <td><img src="https://wow.zamimg.com/images/wow/icons/medium/achievement_dungeon_sanguinedepths.jpg" alt="dungeonicon" /><a href="https://www.wowhead.com/sanguine-depths">Sanguine Depths</a></td>
+                    <td>(roleicon) +0 Fortified<br>(roleicon) +0 Tyrannical</td>
+                    <td>00:12:34</td>
+                </tr>
+                <tr>
+                    <td><img src="https://wow.zamimg.com/images/wow/icons/medium/achievement_dungeon_theneroticwake.jpg" alt="dungeonicon" /><a href="https://www.wowhead.com/the-necrotic-wake">The Necrotic Wake</a></td>
+                    <td>(roleicon) +0 Fortified<br>(roleicon) +0 Tyrannical</td>
+                    <td>00:12:34</td>
+                </tr>
+            </table>
+        </div>
+
+        <!--amount of runs completed in time within different brackets-->
+        <div class="timedruncontainer">
+            <table>
+                <caption>Timed Runs Completed</caption>
+                <tr>
+                    <th>+15 and Up</th>
+                    <th>+10 and Up</th>
+                    <th>+5 and Up</th>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>15</td>
+                    <td>20</td>
+                </tr>
+            </table>
+        </div>
+
+        <!--total mythic+ score-->
+        <div class="mplusrating">
+            <h2>Mythic+ Score</h2>
+            <h3>1234.14</h3>
+        </div>  
+        
+    <!--footer with hyperlink to source page's data-->
+        <div class="resourcefooter">
+            <footer id="raideriofooter">For more information, please visit this character's Raider-IO page</footer>
+        </div>
+    </div>
+
+    <!-- contains arena rankings for 2s, 3s, and rated bgs, as well as previous season rankings for current expansion -->
+    <div id="PVP Rating" class="tabcontent">
+        <div class="rankingcontainer">
+            <table>
+                <caption>Ratings</caption>
+                <tr>
+                    <th>Category</th>
+                    <th>Current Rating</th>
+                    <th>Highest Previous Experience</th>
+                </tr>
+                <tr>
+                    <td>2v2</td>
+                    <td>1337</td>
+                    <td>2100</td>
+                </tr>
+                <tr>
+                    <td>3v3</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>RBGs</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+            </table>
+        </div>
+
+<!--currently working on -->
+        <div class="achievementcontainer">
+            <a href="https://www.wowhead.com/achievement=13964/duelist-battle-for-azeroth-season-4"></a>
+        </div>
+    </div>
+
+    <script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tabchoice;
+
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        tabchoice = document.getElementsByClassName("tabchoice");
+        for (i = 0; i < tabchoice.length; i++) {
+            tabchoice[i].className = tabchoice[i].className.replace(" active", "");
+        }
+
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    document.getElementById("defaultOpen").click();
+   </script>
 </body>
 </html>
